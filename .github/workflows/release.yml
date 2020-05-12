@@ -4,7 +4,7 @@ on:
   release:
 
 jobs:
-    build:
+  build:
     name: Release 
     runs-on: ubuntu-latest
     steps:
@@ -17,14 +17,14 @@ jobs:
         dotnet-version: 3.1.100
     - name: Build with dotnet
       run: dotnet build -c "Release" "./src/src.csproj"
-    deploy:
+  deploy:
      needs: build 
      runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
-    - name: Pack NuGet Package
-     run: dotnet pack --configure Release "./src/src.csproj"
-     -name: Push Package to NuGet
-     run: dotnet nuget push "/src/**/*.nupkg" 
+     steps:
+     - uses: actions/checkout@v1
+     - name: Pack NuGet Package
+       run: dotnet pack --configure Release "./src/src.csproj"
+     - name: Push Package to NuGet
+       run: dotnet nuget push "/src/**/*.nupkg" 
             -- api-key ${{secrets.NUGET_TOKEN}} 
             -- source https://api.nuget.org/v3/index.json
