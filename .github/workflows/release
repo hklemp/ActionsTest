@@ -1,0 +1,30 @@
+name: Build
+
+on: 
+  release:
+
+jobs:
+    build:
+    name: Release 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.100
+    - name: Build with dotnet
+      run: dotnet build -c "Release" "./src/src.csproj"
+    deploy:
+     needs: build 
+     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Pack NuGet Package
+     run: dotnet pack --configure Release "./src/src.csproj"
+     -name: Push Package to NuGet
+     run: dotnet nuget push "/src/**/*.nupkg" 
+            -- api-key ${{secrets.NUGET_TOKEN}} 
+            -- source https://api.nuget.org/v3/index.json
