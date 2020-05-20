@@ -4,5 +4,22 @@
     <OutputType>Exe</OutputType>
     <TargetFrameworks>netcoreapp2.1;netcoreapp2.2;netcoreapp3.0</TargetFrameworks>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <RootNamespace>TESTOnly</RootNamespace>
+    <Authors>Hendrik Klemp</Authors>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <Owners>Hendrik Klemp</Owners>
+    <PackageProjectUrl>https://github.com/hklemp/ActionsTest/</PackageProjectUrl>
+    <PackageTags>Test</PackageTags>
+    <Title>Action Test</Title>
+    <Description>Action Test</Description>
+    <PackageId>ACtionTest</PackageId>
+    <Version>1.1.4.0</Version>
+    <PackageReleaseNotes>
+    Test
+    </PackageReleaseNotes>
+
+  </PropertyGroup>
 
 </Project>
